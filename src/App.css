@@ -22,7 +22,16 @@
 }
 
 #cat-box {
+  margin:25px 100px 0px 100px;
   height: 100px;
   width: 100px;
   background-color: rebeccapurple;
+}
+#name {
+  color:ghostwhite;
+  font-size:24px;
+}
+#alignment{
+  color:dodgerblue;
+  font-size:22px;
 }
