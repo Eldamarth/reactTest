@@ -6,7 +6,7 @@ class App extends Component{
   constructor() {
     super();
     this.state = {
-      cats: ["Midi","Hanzo"]
+      cats: [{name:"Midi",alignment:"Chaotic Neutral"},{name:"Hanzo",alignment:"Chaotic Evil"}]
     }
   }
 
@@ -14,7 +14,12 @@ class App extends Component{
     const { cats } = this.state;
     const catList = cats.map(cat => {
       return <div id='cat-box'>
-        {cat}
+        <p id="name">
+          {cat.name}
+        </p>
+        <p id="alignment">
+          {cat.alignment}
+        </p>
       </div>
     });
     return (
