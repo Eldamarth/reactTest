@@ -1,0 +1,46 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: rebeccapurple;
+  min-height: 15vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: ghostwhite;
+}
+
+.main-display {
+  display: flex;
+  flex-direction: row;
+}
+
+.cat-display {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: scroll;
+  background-color: cornflowerblue;
+  height: 85vh;
+  width: 100%;
+}
+
+#cat-box {
+  margin:25px 100px 0px 100px;
+  min-height: 200px;
+  width: 250px;
+  background-color: rebeccapurple;
+}
+
+#name {
+  color:ghostwhite;
+  font-size:24px;
+}
+
+#alignment{
+  color:dodgerblue;
+  font-size:22px;
+}
