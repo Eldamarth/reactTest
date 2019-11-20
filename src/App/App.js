@@ -6,7 +6,7 @@ class App extends Component{
   constructor() {
     super();
     this.state = {
-      cats: [{name:"Midi",alignment:"Chaotic Neutral"},{name:"Hanzo",alignment:"Chaotic Evil"}]
+      cats: []
     }
   }
 
@@ -16,6 +16,11 @@ class App extends Component{
     this.setState({ cats : [...this.state.cats, newCat]});
   }
 
+  removeCat = catToRemove => {
+    const { cats } = this.state;
+    const filteredCats = cats.filter(cat => cat.name !== catToRemove.name && cat.alignment !== catToRemove.alignment);
+    this.setState({ cats : filteredCats });
+  }
   //we've modified the render here to include the newly imported Form component, and have given it the method addCat as a 'prop,' which is how any information passed down from parent to child is referred to (everything listed as an attribute in the jsx element will be combined into a props object). We use this pattern of defining a method on the parent and passing it to a child in order to maintain the correct this binding 
 
   render() {
@@ -28,6 +33,11 @@ class App extends Component{
         <p id="alignment">
           {cat.alignment}
         </p>
+        <button
+          onClick={() => this.removeCat(cat)}
+        >
+          Remove Cat
+        </button>
       </div>
     });
     return (
@@ -38,7 +48,7 @@ class App extends Component{
         </header>
         <main className='main-display'>
           <Form 
-            addCat={this.addCat} 
+            addCat={this.addCat}
           />
           <div className='cat-display'>
           {catList}
