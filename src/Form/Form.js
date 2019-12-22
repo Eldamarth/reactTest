@@ -46,7 +46,7 @@ class Form extends Component {
           name='alignment'
           value={this.state.alignment}
           onChange={this.handleChange}
-          placeholder='Enter an Alignment'
+          placeholder='Enter an Alignment'=
           />
         <button
           onClick={this.handleSubmit}
