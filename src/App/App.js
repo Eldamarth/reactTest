@@ -2,13 +2,24 @@ import React, { Component } from 'react';
 import './App.css';
 import Form from '../Form/Form.js';
 import Catbox from '../Catbox/Catbox.js';
+import {getCats} from '../util/apiCalls';
 
 class App extends Component{
   constructor() {
     super();
     this.state = {
-      cats: []
+      cats: [],
+      catImages: [],
+      message: "",
+    }
+  }
 
+  componentDidMount = async () => {
+    try{
+      const catImages = await getCats();
+      this.setState({...this.state, catImages})
+    } catch({message}){
+      this.setState({...this.state, message});
     }
   }
 
@@ -26,12 +37,13 @@ class App extends Component{
   //we've modified the render here to include the newly imported Form component, and have given it the method addCat as a 'prop,' which is how any information passed down from parent to child is referred to (everything listed as an attribute in the jsx element will be combined into a props object). We use this pattern of defining a method on the parent and passing it to a child in order to maintain the correct this binding 
 
   render() {
-    const { cats } = this.state;
+    const { cats, catImages } = this.state;
     const catList = cats.map((cat,i) => {
       return <Catbox 
         cat={cat} 
         removeCat={this.removeCat}
         key={cat.name+i}
+        catFace = {catImages[i].url}
       />
     });
     return (
