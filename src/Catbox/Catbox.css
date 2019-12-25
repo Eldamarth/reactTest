@@ -1,0 +1,12 @@
+img {
+    margin: 20px 0px 0px 0px;
+    height: 108px;
+    width: 144px;
+}
+.catbox button {
+    margin: 0px 0px 20px 0px;
+}
+.catbox button:hover{
+    color: white;
+    background-color: chartreuse;
+}
