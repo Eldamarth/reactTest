@@ -14,13 +14,25 @@ class App extends Component{
     }
   }
 
-  componentDidMount = async () => {
-    try{
-      const catImages = await getCats();
-      this.setState({...this.state, catImages})
-    } catch({message}){
-      this.setState({...this.state, message});
-    }
+  // componentDidMount = async () => {
+  //   try{
+  //     const catImages = await getCats();
+  //     this.setState({...this.state, catImages})
+  //   } catch({message}){
+  //     this.setState({...this.state, message});
+  //   }
+  // }
+
+  componentDidMount() {
+    getCats()
+      .then((data)=>this.setState({...this.state,catImages:data}))
+      .catch((error)=> {
+        if (!data.length) {
+          this.setState({...this.state, message: "Sorry, we couldn't find any cat images for you!"})
+        } else {
+        this.setState({...this.state,message:error})
+        }
+      })
   }
 
   //we will define a function in the parent component app to add a new cat to our list, it will take in the newCat object and reassign state with a built in method on React class components called setState, which is asynchronous. Handy tip: it can accept a second argument of a callback function, which is a very convenient place to put a console log checking the component's state, a console log place directly after it will fire before it has updated 
