@@ -1,9 +1,11 @@
 import React from 'react';
 import './Catbox.css';
 
-const Catbox = ({cat,removeCat}) => {
+const Catbox = ({cat,removeCat,catFace}) => {
+
     return (
-        <div id='cat-box' >
+        <div id='cat-box' className = "catbox">
+          <img src={catFace} alt="cute cat"/>
         <p id="name">
           {cat.name}
         </p>
